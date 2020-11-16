@@ -186,41 +186,6 @@ and more accurate.  BWA-MEM also has better performance than BWA-backtrack for
 70-100bp Illumina reads.")
     (license license:gpl3+)))
 
-(define-public miniasm
-  (package
-   (name "miniasm")
-   (version "0.3")
-   (source (origin
-            (method url-fetch)
-            (uri (string-append
-                  "https://github.com/lh3/miniasm/archive/v" version ".tar.gz"))
-            (file-name (string-append name "-" version ".tar.gz"))
-            (sha256
-               (base32
-                "0g89pa98dvh34idv7w1zv12bsbyr3a11c4qb1cdcz68gyda88s4v"))))
-   (build-system gnu-build-system)
-   (inputs
-    `(("zlib" ,zlib)))
-   (arguments
-    `(#:tests? #f
-      #:phases
-      (modify-phases %standard-phases
-        (delete 'configure)
-        (replace 'install
-          (lambda* (#:key inputs outputs #:allow-other-keys)
-            (let ((bin (string-append (assoc-ref outputs "out") "/bin")))
-              (install-file "miniasm" bin)
-              (install-file "minidot" bin)))))))
-   (home-page "https://github.com/lh3/miniasm")
-   (synopsis "Ultrafast de novo assembly for long noisy reads")
-   (description "Miniasm is a very fast OLC-based de novo assembler for noisy
-long reads.  It takes all-vs-all read self-mappings (typically by minimap) as
-input and outputs an assembly graph in the GFA format.  Different from
-mainstream assemblers, miniasm does not have a consensus step.  It simply
-concatenates pieces of read sequences to generate the final unitig sequences.
-Thus the per-base error rate is similar to the raw input reads.")
-   (license license:expat)))
-
 (define-public assembly-stats
   (package
    (name "assembly-stats")
@@ -591,34 +556,6 @@ Python 3 support.")
 
 (define-public python2-shellescape
   (package-with-python2 python-shellescape))
-
-(define-public python2-parallel ; guix fix number of things
-  (package
-    (name "python2-parallel")
-    (version "1.6.4")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (string-append
-             "http://www.parallelpython.com/downloads/pp/pp-" version ".zip"
-             ))
-       (sha256
-        (base32
-         "1bw3j0zn7bj56636vp1vx4m91p2mlp661gn2nfhpbph3prgxzv82"))))
-    (native-inputs
-     `(("unzip" ,unzip)))
-
-    (build-system python-build-system)
-    ;; (native-inputs
-    ;; `(("python-setuptools-vtags" ,python-setuptools-vtags)))
-    (arguments
-     `(#:python ,python-2
-       #:tests? #f
-       ))   ; no 'setup.py test' really!
-    (home-page #f)
-    (synopsis "Parallel python lib")
-    (description #f)
-    (license #f)))
 
 (define-public python2-numarray ; guix: obsolete lib
   (package

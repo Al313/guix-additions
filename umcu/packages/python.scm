@@ -1201,29 +1201,6 @@ inferred as mutational genotypes of distinct clonal populations.")
      "Project documentation with Markdown.")
    (license license:bsd-3)))
 
-(define-public python-livereload
- (package
-   (name "python-livereload")
-   (version "2.6.1")
-   (source
-     (origin
-       (method url-fetch)
-       (uri (pypi-uri "livereload" version))
-       (sha256
-         (base32
-           "0rhggz185bxc3zjnfpmhcvibyzi86i624za1lfh7x7ajsxw4y9c9"))))
-   (build-system python-build-system)
-   (propagated-inputs
-     `(("python-six" ,python-six)
-       ("python-tornado" ,python-tornado)))
-   (home-page
-     "https://github.com/lepture/python-livereload")
-   (synopsis
-     "Python LiveReload is an awesome tool for web developers")
-   (description
-     "Python LiveReload is an awesome tool for web developers")
-   (license license:bsd-3)))
-
 (define-public python-pydoc-markdown
  (package
    (name "python-pydoc-markdown")
@@ -1248,29 +1225,6 @@ inferred as mutational genotypes of distinct clonal populations.")
    (description
      "Create Python API documentation in Markdown format")
    (license license:expat)))
-
-(define-public python-retrying
- (package
-   (name "python-retrying")
-   (version "1.3.3")
-   (source
-     (origin
-       (method url-fetch)
-       (uri (pypi-uri "retrying" version))
-       (sha256
-         (base32
-           "0fwp86xv0rvkncjdvy2mwcvbglw4w9k0fva25i7zx8kd19b3kh08"))))
-   (build-system python-build-system)
-   (arguments
-    `(#:tests? #f))
-   (propagated-inputs
-     `(("python-six" ,python-six)
-       ("python-pytest" ,python-pytest)
-       ("python-tqdm" ,python-tqdm)))
-   (home-page "https://github.com/rholder/retrying")
-   (synopsis "Retrying")
-   (description "Retrying")
-   (license license:asl2.0)))
 
 (define-public python-plotly-3.9.0
  (package

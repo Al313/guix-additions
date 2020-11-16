@@ -450,25 +450,6 @@ maniread, maniskip, manicopy, maniadd.")
     (description "")
     (license (package-license perl))))
 
-(define-public perl-hook-lexwrap
-  (package
-    (name "perl-hook-lexwrap")
-    (version "0.26")
-    (source
-     (origin
-       (method url-fetch)
-       (uri (string-append
-             "mirror://cpan/authors/id/E/ET/ETHER/Hook-LexWrap-"
-             version ".tar.gz"))
-       (sha256
-        (base32
-         "0bgc6w8zs45n6ksgk0zisn9a2vcr3lmzipkan2a94kzrk1gxq2xn"))))
-    (build-system perl-build-system)
-    (home-page "http://search.cpan.org/dist/Hook-LexWrap")
-    (synopsis "Lexically scoped subroutine wrappers")
-    (description "")
-    (license (package-license perl))))
-
 (define-public perl-test-object
   (package
     (name "perl-test-object")
