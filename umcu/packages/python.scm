@@ -465,9 +465,6 @@ tree exploration")
     ;; California, terms of which are included below.
     (license license:mpl2.0)))
 
-(define-public python2-ont-tombo
-  (package-with-python2 python-ont-tombo))
-
 (define-public python-sparqlwrapper
   (package
     (name "python-sparqlwrapper")
